@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>AniMap</title>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><link rel="stylesheet" href="./style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    @-webkit-keyframes fall {
+        0% {
+            opacity: 0.9;
+            top: 0
+        }
+        100% {
+            opacity: 0.2;
+            top: 100%
+        }
+    }
+
+    @keyframes fall {
+        0% {
+            opacity: 0.9;
+            top: 0
+        }
+        100% {
+            opacity: 0.2;
+            top: 100%
+        }
+    }
+
+    @-webkit-keyframes blow-soft-left {
+        0% {
+            margin-left: 0
+        }
+        100% {
+            margin-left: -50%
+        }
+    }
+
+    @keyframes blow-soft-left {
+        0% {
+            margin-left: 0
+        }
+        100% {
+            margin-left: -50%
+        }
+    }
+
+    @-webkit-keyframes blow-medium-left {
+        0% {
+            margin-left: 0
+        }
+        100% {
+            margin-left: -100%
+        }
+    }
+
+    @keyframes blow-medium-left {
+        0% {
+            margin-left: 0
+        }
+        100% {
+            margin-left: -100%
+        }
+    }
+
+    @-webkit-keyframes blow-soft-right {
+        0% {
+            margin-left: 0
+        }
+        100% {
+            margin-left: 50%
+        }
+    }
+
+    @keyframes blow-soft-right {
+        0% {
+            margin-left: 0
+        }
+        100% {
+            margin-left: 50%
+        }
+    }
+
+    @-webkit-keyframes blow-medium-right {
+        0% {
+            margin-left: 0
+        }
+        100% {
+            margin-left: 100%
+        }
+    }
+
+    @keyframes blow-medium-right {
+        0% {
+            margin-left: 0
+        }
+        100% {
+            margin-left: 100%
+        }
+    }
+
+    @-webkit-keyframes sway-0 {
+        0% {
+            -webkit-transform: rotate(-5deg)
+        }
+        40% {
+            -webkit-transform: rotate(28deg)
+        }
+        100% {
+            -webkit-transform: rotate(3deg)
+        }
+    }
+
+    @keyframes sway-0 {
+        0% {
+            -ms-transform: rotate(-5deg);
+            transform: rotate(-5deg)
+        }
+        40% {
+            -ms-transform: rotate(28deg);
+            transform: rotate(28deg)
+        }
+        100% {
+            -ms-transform: rotate(3deg);
+            transform: rotate(3deg)
+        }
+    }
+
+    @-webkit-keyframes sway-1 {
+        0% {
+            -webkit-transform: rotate(10deg)
+        }
+        40% {
+            -webkit-transform: rotate(43deg)
+        }
+        100% {
+            -webkit-transform: rotate(15deg)
+        }
+    }
+
+    @keyframes sway-1 {
+        0% {
+            -ms-transform: rotate(10deg);
+            transform: rotate(10deg)
+        }
+        40% {
+            -ms-transform: rotate(43deg);
+            transform: rotate(43deg)
+        }
+        100% {
+            -ms-transform: rotate(15deg);
+            transform: rotate(15deg)
+        }
+    }
+
+    @-webkit-keyframes sway-2 {
+        0% {
+            -webkit-transform: rotate(15deg)
+        }
+        40% {
+            -webkit-transform: rotate(56deg)
+        }
+        100% {
+            -webkit-transform: rotate(22deg)
+        }
+    }
+
+    @keyframes sway-2 {
+        0% {
+            -ms-transform: rotate(15deg);
+            transform: rotate(15deg)
+        }
+        40% {
+            -ms-transform: rotate(56deg);
+            transform: rotate(56deg)
+        }
+        100% {
+            -ms-transform: rotate(22deg);
+            transform: rotate(22deg)
+        }
+    }
+
+    @-webkit-keyframes sway-3 {
+        0% {
+            -webkit-transform: rotate(25deg)
+        }
+        40% {
+            -webkit-transform: rotate(74deg)
+        }
+        100% {
+            -webkit-transform: rotate(37deg)
+        }
+    }
+
+    @keyframes sway-3 {
+        0% {
+            -ms-transform: rotate(25deg);
+            transform: rotate(25deg)
+        }
+        40% {
+            -ms-transform: rotate(74deg);
+            transform: rotate(74deg)
+        }
+        100% {
+            -ms-transform: rotate(37deg);
+            transform: rotate(37deg)
+        }
+    }
+
+    @-webkit-keyframes sway-4 {
+        0% {
+            -webkit-transform: rotate(40deg)
+        }
+        40% {
+            -webkit-transform: rotate(68deg)
+        }
+        100% {
+            -webkit-transform: rotate(25deg)
+        }
+    }
+
+    @keyframes sway-4 {
+        0% {
+            -ms-transform: rotate(40deg);
+            transform: rotate(40deg)
+        }
+        40% {
+            -ms-transform: rotate(68deg);
+            transform: rotate(68deg)
+        }
+        100% {
+            -ms-transform: rotate(25deg);
+            transform: rotate(25deg)
+        }
+    }
+
+    @-webkit-keyframes sway-5 {
+        0% {
+            -webkit-transform: rotate(50deg)
+        }
+        40% {
+            -webkit-transform: rotate(78deg)
+        }
+        100% {
+            -webkit-transform: rotate(40deg)
+        }
+    }
+
+    @keyframes sway-5 {
+        0% {
+            -ms-transform: rotate(50deg);
+            transform: rotate(50deg)
+        }
+        40% {
+            -ms-transform: rotate(78deg);
+            transform: rotate(78deg)
+        }
+        100% {
+            -ms-transform: rotate(40deg);
+            transform: rotate(40deg)
+        }
+    }
+
+    @-webkit-keyframes sway-6 {
+        0% {
+            -webkit-transform: rotate(65deg)
+        }
+        40% {
+            -webkit-transform: rotate(92deg)
+        }
+        100% {
+            -webkit-transform: rotate(58deg)
+        }
+    }
+
+    @keyframes sway-6 {
+        0% {
+            -ms-transform: rotate(65deg);
+            transform: rotate(65deg)
+        }
+        40% {
+            -ms-transform: rotate(92deg);
+            transform: rotate(92deg)
+        }
+        100% {
+            -ms-transform: rotate(58deg);
+            transform: rotate(58deg)
+        }
+    }
+
+    @-webkit-keyframes sway-7 {
+        0% {
+            -webkit-transform: rotate(72deg)
+        }
+        40% {
+            -webkit-transform: rotate(118deg)
+        }
+        100% {
+            -webkit-transform: rotate(68deg)
+        }
+    }
+
+    @keyframes sway-7 {
+        0% {
+            -ms-transform: rotate(72deg);
+            transform: rotate(72deg)
+        }
+        40% {
+            -ms-transform: rotate(118deg);
+            transform: rotate(118deg)
+        }
+        100% {
+            -ms-transform: rotate(68deg);
+            transform: rotate(68deg)
+        }
+    }
+
+    @-webkit-keyframes sway-8 {
+        0% {
+            -webkit-transform: rotate(94deg)
+        }
+        40% {
+            -webkit-transform: rotate(136deg)
+        }
+        100% {
+            -webkit-transform: rotate(82deg)
+        }
+    }
+
+    @keyframes sway-8 {
+        0% {
+            -ms-transform: rotate(94deg);
+            transform: rotate(94deg)
+        }
+        40% {
+            -ms-transform: rotate(136deg);
+            transform: rotate(136deg)
+        }
+        100% {
+            -ms-transform: rotate(82deg);
+            transform: rotate(82deg)
+        }
+    }
+
+    .sakura {
+        background: -webkit-linear-gradient(120deg, rgba(255, 183, 197, 0.9), rgba(255, 197, 208, 0.9));
+        background: linear-gradient(120deg, rgba(255, 183, 197, 0.9), rgba(255, 197, 208, 0.9));
+        pointer-events: none;
+        position: absolute
+    }
+</style>
+</head>
+
+<!-- partial:index.partial.html -->
+<body>
+  
+
+  <div id="shuffle" class="button">Shuffle</div>
+  <div id="sort" class="button">Clean Up</div>
+
+  <div id="msgWrapper">
+    <div id="message">
+      <p>Click on any image and drag it out of the way, if needed. Or click the "shuffle" button to re-throw the items on the page, or "Clean Up" to clean up the mess. Clicking a thumbnail will show a larger version.</p>
+    </div>
+  </div>
+  <div id="imageSpace">
+    <div class="imgWrapper">
+      <div class="images" id="image1">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/564x/96/e0/30/96e0304dc4860aab369fd9dec1fd834b.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image2">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/21/29/65/212965ca46e23ad7c27181da5f02f42e.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image3">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/f4/10/bf/f410bfa1564aa76136691b47187197c1.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image4">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/51/0b/5a/510b5a76e6b2ef92e7e2260839577dec.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image5">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/99/1b/64/991b648eeaedaea756d117e9d6830157.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image6">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/c7/d3/87/c7d3875dffafcf424e5c8b0b95f2f706.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="imgWrapper">
+      <div class="images" id="image7">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/84/ed/75/84ed75e288d571fe4658af775940e86b.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image8">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/25/c7/26/25c726ae97074cd19a65b69b53b37f11.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image9">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/bf/42/d1/bf42d16554a97045eee69c88e26c82cb.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image10">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/7c/e8/43/7ce8434078eda6f92e020b9a22346206.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image11">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/7c/e8/43/7ce8434078eda6f92e020b9a22346206.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="imgWrapper">
+      <div class="images" id="image12">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/76/f1/96/76f196dc40188428092a94057efb82e9.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image13">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/c9/af/84/c9af842d4db838fd0987351de9e99b2d.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image14">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/84/84/18/8484186bd7c9cc1f42b2a44b0bd13cb5.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image15">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/ee/2b/14/ee2b1494f9fb571f853dcbfb6293a967.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image16">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/57/71/25/5771258385cbf39926df81457ce1f60a.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="imgWrapper">
+      <div class="images" id="image17">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/6c/02/30/6c02306a974e06b9455fe886fab1c77b.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image18">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/03/4b/a5/034ba5a69a79425f8d6afe9aedc97b18.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image19">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/81/53/9a/81539aa90d98b5e9cef931a002767be1.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image20">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/ca/43/82/ca43827dcbc9494141a72956af6ba2ff.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image21">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/2d/83/0e/2d830ebf727231bab9f9a2f4c580f567.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="imgWrapper">
+      <div class="images" id="image22">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/5d/59/3c/5d593c58f9bf6b0bf5c99e9f05f4d76a.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image23">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/3a/a6/d0/3aa6d08fd64f8c16a843a0b6b955cb67.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image24">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/6b/fe/70/6bfe702fcdcd488eeb17c782bf3fdb63.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image25">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/ea/28/26/ea282676a89d6e1415ad0f3a60566106.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image26">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/ab/52/ac/ab52ac77d64210aacf0b8f46fd60d939.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="imgWrapper">
+      <div class="images" id="image27">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/06/fe/b4/06feb423cc4cccc5b4f837f3b7b57024.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image28">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/fa/49/1d/fa491ddede5c453d8ed35cb7b8889698.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image29">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/0c/bf/b4/0cbfb44e96bd4ad3a53bb812f295c89a.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image30">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/5b/aa/f0/5baaf04636b2f63df7ed3d72944b157b.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image31">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/e3/57/01/e357016a30b0aec98807ebbc5dfbe9df.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="imgWrapper">
+      <div class="images" id="image32">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/0f/95/af/0f95af83b95506f5a36a8a7b78478897.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image33">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/f3/64/97/f36497d60cfe730ea9f2cb83cd3073a2.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image34">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/17/a1/e2/17a1e2e4920478f9a5dc2685e7f890e8.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image35">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/6a/d6/40/6ad640431faf40d0b664b52c6c874037.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image36">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/5a/e0/f7/5ae0f74d8f4e43a3657ecfa90651f7cd.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="imgWrapper">
+      <div class="images" id="image37">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/8a/a1/b4/8aa1b43408650f2a9713c8b9693968ac.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image38">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/41/f6/15/41f615818064a572a2cc4f8c09b149c9.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image39">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/54/ca/a7/54caa76f8c42fe6b7fcf8304c429bfd0.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+    <div class="imgWrapper">
+      <div class="images" id="image40">
+        <div class="hitArea">
+          <img src="https://i.pinimg.com/236x/0a/d3/4d/0ad34dfca1ddc11328e98e649651c17c.jpg" width="100%" height="100%"
+            alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+    <audio  autoplay loop >
+      
+      <source src="/yt1s.com - My Dearest  Guilty Crown OP 10 Year Anniversary Edition Piano.mp3"  type="audio/mpeg">
+
+    </audio>
+
+  </div>
+  <embed src="/yt1s.com - My Dearest  Guilty Crown OP 10 Year Anniversary Edition Piano.mp3" hidden="true"></embed>
+  <script type="text/javascript">
+    // Plugin code
+    (function ($) {
+        /** Polyfills and prerequisites **/
+
+        // requestAnimationFrame Polyfill
+        var lastTime    = 0;
+        var vendors     = ['webkit', 'o', 'ms', 'moz', ''];
+        var vendorCount = vendors.length;
+
+        for (var x = 0; x < vendorCount && ! window.requestAnimationFrame; ++x) {
+            window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+            window.cancelAnimationFrame  = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+        }
+
+        if ( ! window.requestAnimationFrame) {
+            window.requestAnimationFrame = function(callback) {
+                var currTime   = new Date().getTime();
+                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+
+                var id   = window.setTimeout(function() { callback(currTime + timeToCall); }, timeToCall);
+                lastTime = currTime + timeToCall;
+
+                return id;
+            };
+        }
+
+        if ( ! window.cancelAnimationFrame) {
+            window.cancelAnimationFrame = function(id) {
+                clearTimeout(id);
+            };
+        }
+
+        // Prefixed event check
+        $.fn.prefixedEvent = function(type, callback) {
+            for (var x = 0; x < vendorCount; ++x) {
+                if ( ! vendors[x]) {
+                    type = type.toLowerCase();
+                }
+
+                el = (this instanceof jQuery ? this[0] : this);
+                el.addEventListener(vendors[x] + type, callback, false);
+            }
+
+            return this;
+        };
+
+        // Test if element is in viewport
+        function elementInViewport(el) {
+
+            if (el instanceof jQuery) {
+                el = el[0];
+            }
+
+            var rect = el.getBoundingClientRect();
+
+            return (
+                rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+        }
+
+        // Random array element
+        function randomArrayElem(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        // Random integer
+        function randomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        /** Actual plugin code **/
+        $.fn.sakura = function (event, options) {
+
+            // Target element
+            var target = this.selector == "" ? $('body') : this;
+
+            // Defaults for the option object, which gets extended below
+            var defaults = {
+                blowAnimations: ['blow-soft-left', 'blow-medium-left', 'blow-soft-right', 'blow-medium-right'],
+                className: 'sakura',
+                fallSpeed: 1,
+                maxSize: 14,
+                minSize: 10,
+                newOn: 300,
+                swayAnimations: ['sway-0', 'sway-1', 'sway-2', 'sway-3', 'sway-4', 'sway-5', 'sway-6', 'sway-7', 'sway-8']
+            };
+
+            var options = $.extend({}, defaults, options);
+
+            // Default or start event
+            if (typeof event === 'undefined' || event === 'start') {
+
+                // Set the overflow-x CSS property on the target element to prevent horizontal scrollbars
+                target.css({ 'overflow-x': 'hidden' });
+
+                // Function that inserts new petals into the document
+                var petalCreator = function () {
+                    if (target.data('sakura-anim-id')) {
+                        setTimeout(function () {
+                            requestAnimationFrame(petalCreator);
+                        }, options.newOn);
+                    }
+
+                    // Get one random animation of each type and randomize fall time of the petals
+                    var blowAnimation = randomArrayElem(options.blowAnimations);
+                    var swayAnimation = randomArrayElem(options.swayAnimations);
+                    var fallTime = ((document.documentElement.clientHeight * 0.007) + Math.round(Math.random() * 5)) * options.fallSpeed;
+
+                    // Build animation
+                    var animations =
+                        'fall ' + fallTime + 's linear 0s 1' + ', ' +
+                            blowAnimation + ' ' + (((fallTime > 30 ? fallTime : 30) - 20) + randomInt(0, 20)) + 's linear 0s infinite' + ', ' +
+                            swayAnimation + ' ' + randomInt(2, 4) + 's linear 0s infinite';
+
+                    // Create petal and randomize size
+                    var petal  = $('<div class="' + options.className + '" />');
+                    var height = randomInt(options.minSize, options.maxSize);
+                    var width  = height - Math.floor(randomInt(0, options.minSize) / 3);
+
+                    // Apply Event Listener to remove petals that reach the bottom of the page
+                    petal.prefixedEvent('AnimationEnd', function () {
+                        if ( ! elementInViewport(this)) {
+                            $(this).remove();
+                        }
+                    })
+                    // Apply Event Listener to remove petals that finish their horizontal float animation
+                    .prefixedEvent('AnimationIteration', function (ev) {
+                        if (
+                            (
+                                $.inArray(ev.animationName, options.blowAnimations) != -1 ||
+                                $.inArray(ev.animationName, options.swayAnimations) != -1
+                            ) &&
+                            ! elementInViewport(this)
+                        ) {
+                            $(this).remove();
+                        }
+                    })
+                    .css({
+                        '-webkit-animation': animations,
+                        animation: animations,
+                        'border-radius': randomInt(options.maxSize, (options.maxSize + Math.floor(Math.random() * 10))) + 'px ' + randomInt(1, Math.floor(width / 4)) + 'px',
+                        height: height + 'px',
+                        left: (Math.random() * document.documentElement.clientWidth - 100) + 'px',
+                        'margin-top': (-(Math.floor(Math.random() * 20) + 15)) + 'px',
+                        width: width + 'px'
+                    });
+
+                    target.append(petal);
+                };
+
+                // Finally: Start adding petals
+                target.data('sakura-anim-id', requestAnimationFrame(petalCreator));
+
+            }
+            // Stop event, which stops the animation loop and removes all current blossoms
+            else if (event === 'stop') {
+
+                // Cancel animation
+                var animId = target.data('sakura-anim-id');
+
+                if (animId) {
+                    cancelAnimationFrame(animId);
+                    target.data('sakura-anim-id', null);
+                }
+
+                // Remove all current blossoms
+                setTimeout(function() {
+                    $('.' + options.className).remove();
+                }, (options.newOn + 50));
+
+            }
+        };
+    }(jQuery));
+
+    $(document).ready(function() {
+        $('body').sakura();
+    });
+</script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
